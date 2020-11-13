@@ -247,6 +247,14 @@ static esp_err_t esp_spiffs_init(const esp_vfs_spiffs_conf_t* conf)
         esp_spiffs_free(&efs);
         return ESP_FAIL;
     }
+    if (conf->run_check) {
+        res = SPIFFS_check(efs->fs);
+        if (res == SPIFFS_OK) {
+            ESP_LOGI(TAG, "check ok");
+        } else {
+            ESP_LOGE(TAG, "check error: %d", res);
+        }
+    }
     _efs[index] = efs;
     return ESP_OK;
 }

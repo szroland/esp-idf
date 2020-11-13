@@ -30,6 +30,7 @@ typedef struct {
         const char* partition_label;    /*!< Optional, label of SPIFFS partition to use. If set to NULL, first partition with subtype=spiffs will be used. */
         size_t max_files;               /*!< Maximum files that could be open at the same time. */
         bool format_if_mount_failed;    /*!< If true, it will format the file system if it fails to mount. */
+		bool run_check;                 /*!< If true, SPIFFS_check will be used to check the file system once mounted */
 } esp_vfs_spiffs_conf_t;
 
 /**
